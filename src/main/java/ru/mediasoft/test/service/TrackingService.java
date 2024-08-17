@@ -9,6 +9,7 @@ import ru.mediasoft.test.model.TrackingEvent;
 import ru.mediasoft.test.utils.EntityUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,8 +20,10 @@ public class TrackingService {
     public StatusAndHistoryDto getStatusAndHistory(Long itemId){
         PostalItem item = entityUtils.getPostalItem(itemId);
         List<TrackingEvent> history = item.getTrackingEvents();
-        String status = history.get(0).getStatus().toString();
-        List<TrackingEventDto> historyDto = new ArrayList<>(history.stream().map(TrackingEventDto :: new).toList());
+        List<TrackingEvent> copyHistory = new ArrayList<>(history);
+        Collections.reverse(copyHistory);
+        String status = copyHistory.get(0).getStatus().toString();
+        List<TrackingEventDto> historyDto = new ArrayList<>(copyHistory.stream().map(TrackingEventDto :: new).toList());
         return new StatusAndHistoryDto(status, historyDto);
     }
 }

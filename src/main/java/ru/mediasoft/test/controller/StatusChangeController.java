@@ -2,11 +2,13 @@ package ru.mediasoft.test.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.mediasoft.test.controller.Dto.DataForChangeItemStatusDto;
+import ru.mediasoft.test.controller.Dto.PostItemIdDto;
 import ru.mediasoft.test.service.StatusChangeService;
 
 @RestController
@@ -15,18 +17,17 @@ import ru.mediasoft.test.service.StatusChangeService;
 public class StatusChangeController {
     private final StatusChangeService statusChangeService;
     @PostMapping("/arrivalAtIntermediatePoint")
-    public ResponseEntity<String> arrivalAtIntermediatePoint(@RequestBody DataForChangeItemStatusDto data) {
-        statusChangeService.arrivalAtIntermediatePoint(data.getPostItemId(), data.getPostOfficeId());
-        return ResponseEntity.ok("Посылка прибыла в пункт");
+    public ResponseEntity<String> arrivalAtIntermediatePoint(@RequestBody @Validated DataForChangeItemStatusDto data) {
+        return ResponseEntity.ok(statusChangeService.arrivalAtIntermediatePoint(data.getPostItemId(), data.getPostOfficeId()));
     }
 
     @PostMapping("/departureFromIntermediatePoint")
-    public ResponseEntity<?> departureFromIntermediatePoint(@RequestBody Long itemId){
-        return ResponseEntity.ok(statusChangeService.departureFromIntermediatePoint(itemId));
+    public ResponseEntity<String> departureFromIntermediatePoint(@RequestBody @Validated PostItemIdDto data){
+        return ResponseEntity.ok(statusChangeService.departureFromIntermediatePoint(data.getId()));
     }
 
     @PostMapping("/receiptByAddressee")
-    public ResponseEntity<?> receiptByAddressee(@RequestBody Long itemId){
-        return ResponseEntity.ok(statusChangeService.receiptByAddressee(itemId));
+    public ResponseEntity<String> receiptByAddressee(@RequestBody @Validated PostItemIdDto data){
+        return ResponseEntity.ok(statusChangeService.receiptByAddressee(data.getId()));
     }
 }

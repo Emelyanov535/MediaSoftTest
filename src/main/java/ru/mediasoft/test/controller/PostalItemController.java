@@ -3,6 +3,7 @@ package ru.mediasoft.test.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class PostalItemController {
 
     private final PostalItemService postalItemService;
     @PostMapping()
-    public ResponseEntity<PostalItemDto> registerPostalItem(@RequestBody RegisterPostalItemDto data) {
+    public ResponseEntity<PostalItemDto> registerPostalItem(@RequestBody @Validated RegisterPostalItemDto data) {
         PostalItemDto createdItem = postalItemService.registerPostalItem(data);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdItem);
     }

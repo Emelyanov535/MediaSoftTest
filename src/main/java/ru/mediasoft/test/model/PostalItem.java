@@ -22,9 +22,10 @@ public class PostalItem {
     private String recipientName;
 
     @OneToMany(mappedBy = "postalItem", cascade = CascadeType.ALL)
+    @OrderBy("timestamp ASC")
     private List<TrackingEvent> trackingEvents;
 
     public void addToList(TrackingEvent trackingEvent){
-        trackingEvents.add(trackingEvent);
+        this.trackingEvents.add(trackingEvent);
     }
 }
