@@ -1,7 +1,6 @@
 package ru.mediasoft.test.service;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.mediasoft.test.model.PostOffice;
 import ru.mediasoft.test.model.PostalItem;
