@@ -36,8 +36,8 @@ $env:DB_NAME="mediasoft_test"
 $env:DB_USERNAME="postgres"
 $env:DB_PASSWORD="postgres"
 ```
-```powershell
 В Linux/MacOS:
+```powershell
 export DB_NAME=mediasoft_test
 export DB_USERNAME=postgres
 export DB_PASSWORD=postgres
@@ -80,9 +80,9 @@ java -jar build/libs/MediaSoftTest-0.0.1-SNAPSHOT.war
    }
    ```
 2. Изменение статуса отправления
-   - Endpoint: POST /api/v1/status-change/{status}
-   - Request Body (для разных статусов):
    Для прибытия в промежуточное отделение:
+   - Endpoint: POST /api/v1/status-change/arrivalAtIntermediatePoint
+   - Request Body:
    ```json
    {
       "postItemId": 1,
@@ -90,12 +90,16 @@ java -jar build/libs/MediaSoftTest-0.0.1-SNAPSHOT.war
    }
    ```
    Для отправления из промежуточного отделения:
+   - Endpoint: POST /api/v1/status-change/departureFromIntermediatePoint
+   - Request Body:
    ```json
    {
       "id": 1
    }
    ```
    Для получения адресатом:
+   - Endpoint: POST /api/v1/status-change/receiptByAddressee
+   - Request Body:
    ```json
    {
       "id": 1
