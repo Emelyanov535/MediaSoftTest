@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.2'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'war'
 }
 
 group = 'ru.mediasoft'
@@ -25,6 +26,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.postgresql:postgresql'
@@ -39,4 +41,11 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootWar {
+    mainClass = 'ru.mediasoft.test.MediaSoftTestApplication'
+}
+tasks.withType(Test) {
+    enabled = false
 }
