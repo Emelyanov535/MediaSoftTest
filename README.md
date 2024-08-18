@@ -73,7 +73,7 @@ java -jar build/libs/MediaSoftTest-0.0.1-SNAPSHOT.war
    ```json
    {
        "id": 1,
-       "type": "letter",
+       "type": "LETTER",
        "recipientIndex": 123456,
        "recipientAddress": "123 Main St",
        "recipientName": "John Doe"
@@ -85,20 +85,20 @@ java -jar build/libs/MediaSoftTest-0.0.1-SNAPSHOT.war
    Для прибытия в промежуточное отделение:
    ```json
    {
-   "postItemId": 1,
-   "postOfficeId": 2
+      "postItemId": 1,
+      "postOfficeId": 2
    }
    ```
    Для отправления из промежуточного отделения:
    ```json
    {
-   "id": 1
+      "id": 1
    }
    ```
    Для получения адресатом:
    ```json
    {
-   "id": 1
+      "id": 1
    }
    ```
 3. Получение статуса и истории
@@ -106,33 +106,33 @@ java -jar build/libs/MediaSoftTest-0.0.1-SNAPSHOT.war
    - Response:
    ```json
    {
-   "status": "RECEIVED",
-   "historyTracking": [
-   {
-   "timestamp": "2024-08-17T21:37:38.79434",
-   "status": "RECEIVED",
-   "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
-   },
-   {
-   "timestamp": "2024-08-17T21:35:05.254899",
-   "status": "READY_TO_RECEIVE",
-   "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
-   },
-   {
-   "timestamp": "2024-08-17T21:35:05.208371",
-   "status": "ARRIVED_AT_THE_POST_OFFICE",
-   "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
-   },
-   {
-   "timestamp": "2024-08-17T21:21:59.489304",
-   "status": "LEFT_FROM_THE_POST_OFFICE",
-   "postOffice": "Адрес пункта: Нариманова - Индекс пункта: 432030"
-   },
-   {
-   "timestamp": "2024-08-17T20:55:49.530797",
-   "status": "REGISTER",
-   "postOffice": "Адрес пункта: Нариманова - Индекс пункта: 432030"
+      "status": "RECEIVED",
+      "historyTracking": [
+      {
+         "timestamp": "2024-08-17T21:37:38.79434",
+         "status": "RECEIVED",
+         "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
+         },
+         {
+         "timestamp": "2024-08-17T21:35:05.254899",
+         "status": "READY_TO_RECEIVE",
+         "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
+         },
+         {
+         "timestamp": "2024-08-17T21:35:05.208371",
+         "status": "ARRIVED_AT_THE_POST_OFFICE",
+         "postOffice": "Адрес пункта: Ульяны Громовой - Индекс пункта: 432027"
+         },
+         {
+         "timestamp": "2024-08-17T21:21:59.489304",
+         "status": "LEFT_FROM_THE_POST_OFFICE",
+         "postOffice": "Адрес пункта: Нариманова - Индекс пункта: 432030"
+         },
+         {
+         "timestamp": "2024-08-17T20:55:49.530797",
+         "status": "REGISTER",
+         "postOffice": "Адрес пункта: Нариманова - Индекс пункта: 432030"
+         }
+      ]
    }
-   ]
-}
    ```
